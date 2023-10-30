@@ -4,10 +4,6 @@
  */
 package UniversalPackageAuthority;
 
-import Business.Profiles.professorDirectory;
-import Business.Profiles.studentDirectory;
-import javax.swing.JPanel;
-
 /**
  *
  * @author niyatiashar
@@ -17,10 +13,10 @@ public class UniversalCertificationAuthorityJPanel extends javax.swing.JPanel {
     /**
      * Creates new form UniversalCertificationAuthorityJPanel
      */
-    
-    public UniversalCertificationAuthorityJPanel(JPanel UserProcessContainer, professorDirectory professordirectory, studentDirectory studentdirectory) {
+    public UniversalCertificationAuthorityJPanel() {
         initComponents();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

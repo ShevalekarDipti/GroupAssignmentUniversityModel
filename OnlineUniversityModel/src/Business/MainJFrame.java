@@ -5,7 +5,6 @@
 package Business;
 
 import Business.Profiles.professorDirectory;
-import Business.Profiles.student;
 import Business.Profiles.studentDirectory;
 import java.awt.CardLayout;
 
@@ -18,20 +17,12 @@ public class MainJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrame
      */
-    private studentDirectory studentDirectory;
-    private professorDirectory professorDirectory;
-    private student student;
-    private course course;
-    private CourseCatalog CourseCatalog;
-
+    
+    private studentDirectory studentdirectory;
+    private professorDirectory professordirectory;
+    
     public MainJFrame() {
         initComponents();
-        
-        this.professorDirectory = new professorDirectory();
-        this.studentDirectory = new studentDirectory();
-        this.student = new student();
-        this.course = new course();
-        this.CourseCatalog= new CourseCatalog();
     }
 
     /**
@@ -95,7 +86,7 @@ public class MainJFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 734, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,23 +98,23 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-
-        loginJPanel loginpagejpanel = new loginJPanel(UserProcessContainer, professorDirectory, studentDirectory, course, CourseCatalog);
+        
+        loginJPanel loginpagejpanel = new loginJPanel(UserProcessContainer, professordirectory, studentdirectory );
         UserProcessContainer.add("LoginPageJPanel", loginpagejpanel);
         CardLayout layout = (CardLayout) UserProcessContainer.getLayout();
-        System.out.println("Switching to LoginPageJPanel");
+         System.out.println("Switching to LoginPageJPanel");
         layout.next(UserProcessContainer);
-
-
+        
+        
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
         // TODO add your handling code here:
-
-        signUpJPanel signupjpanel = new signUpJPanel(UserProcessContainer, professorDirectory, studentDirectory, student);
-        UserProcessContainer.add("SignUpJPanel", signupjpanel);
+        
+          signUpJPanel signuppagejpanel = new signUpJPanel(UserProcessContainer, professordirectory, studentdirectory );
+        UserProcessContainer.add("SignUpJPanel", signuppagejpanel);
         CardLayout layout = (CardLayout) UserProcessContainer.getLayout();
-        System.out.println("Switching to SignUpJPanel");
+         System.out.println("Switching to LoginPageJPanel");
         layout.next(UserProcessContainer);
     }//GEN-LAST:event_btnSignUpActionPerformed
 
@@ -160,14 +151,8 @@ public class MainJFrame extends javax.swing.JFrame {
                 new MainJFrame().setVisible(true);
             }
         });
-        
-        
-         professorDirectory directory = new professorDirectory();
-         directory.addHardcodedProfessors();
     }
 
-   
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel UserProcessContainer;
     private javax.swing.JButton btnLogin;

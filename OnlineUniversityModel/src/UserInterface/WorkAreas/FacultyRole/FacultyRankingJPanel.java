@@ -4,12 +4,6 @@
  */
 package UserInterface.WorkAreas.FacultyRole;
 
-import Business.CourseCatalog;
-import Business.Profiles.professorDirectory;
-import Business.Profiles.studentDirectory;
-import Business.course;
-import javax.swing.JPanel;
-
 /**
  *
  * @author niyatiashar
@@ -19,9 +13,10 @@ public class FacultyRankingJPanel extends javax.swing.JPanel {
     /**
      * Creates new form rankingJPanel
      */
-    public FacultyRankingJPanel(JPanel UserProcessContainer, studentDirectory studentDirectory, professorDirectory professorDirectory, course course, CourseCatalog CourseCatalog) {
+    public FacultyRankingJPanel() {
         initComponents();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -30,12 +30,6 @@ public class studentDirectory {
         return student;
     }
     
-      public void addStudent(student student){
-        studentList.add(student);
-        
-    }
-    
-    
        public void deleteStudent(student student){
         studentList.remove(student);
         }

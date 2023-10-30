@@ -23,7 +23,11 @@ import javax.swing.JPanel;
  * @author kal
  */
 
+
+
 public class AdminRoleWorkAreaJPanel extends javax.swing.JPanel {
+
+    javax.swing.JPanel CardSequencePanel;
   //  Business business;
 
     /**

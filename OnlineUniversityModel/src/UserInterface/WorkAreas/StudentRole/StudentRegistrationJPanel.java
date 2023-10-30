@@ -4,6 +4,17 @@
  */
 package UserInterface.WorkAreas.StudentRole;
 
+import Business.CourseCatalog;
+import Business.Profiles.professor;
+import Business.Profiles.professorDirectory;
+import Business.Profiles.student;
+import Business.Profiles.studentDirectory;
+import Business.course;
+import java.util.ArrayList;
+import java.util.Map;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author niyatiashar
@@ -13,10 +24,17 @@ public class StudentRegistrationJPanel extends javax.swing.JPanel {
     /**
      * Creates new form registrationJPanel
      */
-    public StudentRegistrationJPanel() {
+    private course course;
+    private professor professor;
+    private studentDirectory studentDirectory;
+    private CourseCatalog CourseCatalog;
+    
+    public StudentRegistrationJPanel(JPanel UserProcessContainer, professorDirectory professordirectory, studentDirectory studentdirectory) {
         initComponents();
+        this.CourseCatalog= CourseCatalog;
     }
 
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,7 +54,7 @@ public class StudentRegistrationJPanel extends javax.swing.JPanel {
         btnSearch = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblCourseRegistration = new javax.swing.JTable();
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -49,10 +67,15 @@ public class StudentRegistrationJPanel extends javax.swing.JPanel {
         lblLanguage.setText("Language:");
 
         btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
         btnClear.setText("Clear");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblCourseRegistration.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -60,10 +83,10 @@ public class StudentRegistrationJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Course Name", "Course Number", "Language", "Term", "Instructor", "Day", "Time"
+                "Course Name", "Course Number", "Language", "Term", "Professor Name", "Day", "Time"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblCourseRegistration);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -124,16 +147,69 @@ public class StudentRegistrationJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
+    Map<String, ArrayList<course>> mapOfCourse = CourseCatalog.createProfessorCourseMap(); // Make sure to retrieve or generate this data
+    PopulateTable(mapOfCourse);
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void PopulateTable( Map<String, ArrayList<course>> mapOfCourse) {
+        DefaultTableModel dtm = (DefaultTableModel) tblCourseRegistration.getModel();
+    dtm.setRowCount(0);
+
+    String professorName = txtProfessor.getText().trim();
+    String courseName = txtCourseName.getText().trim();
+    String language = txtLanguage.getText().trim();
+
+    // Get the professor-course mapping from the HashMap
+    //Map<String, ArrayList<course>> mapOfCourse = createProfessorCourseMap();
+    
+    for (String profName : mapOfCourse.keySet()) {
+            ArrayList<course> professorCourses = mapOfCourse.get(profName);
+            for (course course : professorCourses) {
+                if (courseMatchesCriteria(course, professorName, courseName, language)) {
+                    Object[] row = new Object[7];
+                    row[0] = course.getCourseName();
+                    row[1] = course.getCourseID();
+                    row[2] = course.getLanguage();
+                    row[3] = course.getTerm();
+                    row[4] = course.getProfessorName();
+                    row[5] = course.getCourseDay();
+                    row[6] = course.getCourseTime();
+
+                    dtm.addRow(row);
+            }
+        }
+    }
+    
+    
+    }
+    
+    private boolean courseMatchesCriteria(course course, String professorName, String courseName, String language) {
+        if (!professorName.isEmpty() && !course.getProfessorName().equalsIgnoreCase(professorName)) {
+            return false;
+        }
+
+        if (!courseName.isEmpty() && !course.getCourseName().equalsIgnoreCase(courseName)) {
+            return false;
+        }
+
+        if (!language.isEmpty() && !course.getLanguage().equalsIgnoreCase(language)) {
+            return false;
+        }
+
+        return true;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnSearch;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblCourseName;
     private javax.swing.JLabel lblLanguage;
     private javax.swing.JLabel lblProfessor;
+    private javax.swing.JTable tblCourseRegistration;
     private javax.swing.JTextField txtCourseName;
     private javax.swing.JTextField txtLanguage;
     private javax.swing.JTextField txtProfessor;

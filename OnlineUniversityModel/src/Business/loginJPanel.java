@@ -4,21 +4,15 @@
  */
 package Business;
 
-import Business.Profiles.professor;
 import Business.Profiles.professorDirectory;
 import Business.Profiles.student;
 import Business.Profiles.studentDirectory;
-
-import UniversalPackageAuthority.UniversalCertificationAuthorityJPanel;
 import UserInterface.WorkAreas.AdminRole.AdminRoleWorkAreaJPanel;
-import UserInterface.WorkAreas.FacultyRole.FacultyWorkAreaJPanel;
 import UserInterface.WorkAreas.StudentRole.StudentWorkAreaJPanel;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
-
 
 /**
  *
@@ -29,20 +23,17 @@ public class loginJPanel extends javax.swing.JPanel {
     /**
      * Creates new form loginJPanel
      */
-    private JPanel UserProcessContainer;
+      private JPanel UserProcessContainer;
     private professorDirectory professordirectory;
     private studentDirectory studentdirectory;
-    private course course;
-    private CourseCatalog CourseCatalog;
-
-    public loginJPanel(JPanel UserProcessContainer, professorDirectory professordirectory, studentDirectory studentdirectory, course course, CourseCatalog CourseCatalog ) {
+    
+    public loginJPanel(JPanel UserProcessContainer, professorDirectory professordirectory, studentDirectory studentdirectory) {
         initComponents();
         this.UserProcessContainer = UserProcessContainer;
         this.professordirectory = professordirectory;
         this.studentdirectory = studentdirectory;
-        this.course = course;
-        this.CourseCatalog = CourseCatalog;
-
+        
+        
     }
 
     /**
@@ -78,6 +69,8 @@ public class loginJPanel extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Login Panel");
+
+        txtPassword.setText("jPasswordField1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -120,78 +113,32 @@ public class loginJPanel extends javax.swing.JPanel {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-
+        
         String userName = txtUserName.getText();
         char[] passwordChars = txtPassword.getPassword();
         String pwd = new String(passwordChars);
-
+       
         if (userName.equals("admin") && pwd.equals("Admin@1234")) {
-            // Admin login
-            AdminRoleWorkAreaJPanel adminworkareapanel = new AdminRoleWorkAreaJPanel(UserProcessContainer, professordirectory, studentdirectory);
-            UserProcessContainer.add("AdminRoleWorkAreaJPanel", adminworkareapanel);
-            CardLayout layout = (CardLayout) UserProcessContainer.getLayout();
-            layout.next(UserProcessContainer);
-            
-            System.out.println("Went into admin");
-        } 
-        else if (userName.isEmpty() || pwd.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Some fields are empty");
-             System.out.println("Went into select");
-        } 
-        else if (userName.equals("athority") && pwd.equals("Authority@1234")) {
-
-            UniversalCertificationAuthorityJPanel universalauthority = new UniversalCertificationAuthorityJPanel(UserProcessContainer, professordirectory, studentdirectory);
-            UserProcessContainer.add("UniversalCertificationAuthorityJPanel", universalauthority);
-            CardLayout layout = (CardLayout) UserProcessContainer.getLayout();
-            layout.next(UserProcessContainer); 
-             System.out.println("Went into authority");
-        }
-        else {
-            boolean found = false;
-
-            ArrayList<student> studList = studentdirectory.getstudentList();
-            for (student stud : studList) {
-                if (userName.equals(stud.getStudUserName())) {
-                    
-                    StudentWorkAreaJPanel studentworkareajpanel = new StudentWorkAreaJPanel(UserProcessContainer, studentdirectory, professordirectory);
-                    UserProcessContainer.add("StudentWorkAreaJPanel", studentworkareajpanel);
-                    CardLayout layout = (CardLayout) UserProcessContainer.getLayout();
-                    layout.next(UserProcessContainer);
-                    found = true;
-                     System.out.println("Went into student");
-                    break; // Exit the loop as the user is found
-                    
-                }
+                AdminRoleWorkAreaJPanel adminworkareapanel = new AdminRoleWorkAreaJPanel(UserProcessContainer, professordirectory, studentdirectory);
+                UserProcessContainer.add("AdminRoleWorkAreaJPanel", adminworkareapanel);
+                CardLayout layout = (CardLayout) UserProcessContainer.getLayout();
+                layout.next(UserProcessContainer);
             }
-
-            if (!found) {
-                // Check professors only if the user is not found among students
-                ArrayList<professor> profList = professordirectory.getProfessorList();
-                for (professor prof : profList) {
-                    if (userName.equals(prof.getProfUserName())) {
-                        // Professor login
-                        // Redirect to Professor panel      
-                        FacultyWorkAreaJPanel facultyworkareajpanel = new FacultyWorkAreaJPanel(UserProcessContainer, studentdirectory, professordirectory, course, CourseCatalog);
-                        
-                       // course course, CourseCatalog CourseCatalog
-                        UserProcessContainer.add("FacultyWorkAreaJPanel", facultyworkareajpanel);
+        else if (userName.equals("") ) {
+            JOptionPane.showMessageDialog(this, "Some fields are empty"); 
+            }
+            else {
+                ArrayList<student> studLst = studentdirectory.getstudentList();
+                for (student stud1 : studLst) {
+                    if (userName.equals(stud1.getStudUserName()) && pwd.equals(stud1.getStudPassword())) 
+                    {
+                        StudentWorkAreaJPanel studentworkareajpanel = new StudentWorkAreaJPanel(UserProcessContainer, studentdirectory, professordirectory);
+                        UserProcessContainer.add("StudentWorkAreaJPanel", studentworkareajpanel);
                         CardLayout layout = (CardLayout) UserProcessContainer.getLayout();
                         layout.next(UserProcessContainer);
-                         System.out.println("Went into professor");
-                        found = true;
-                        // You need to implement ProfessorWorkAreaJPanel or handle professor login accordingly.
-                        break;
-                    }
+                    } 
                 }
-            }
-
-            if (!found) {
-                JOptionPane.showMessageDialog(btnLogin, "Invalid username or password");
-                 System.out.println("Went into Invalid");
-            }
-        }
-
-
+          }
     }//GEN-LAST:event_btnLoginActionPerformed
 
 

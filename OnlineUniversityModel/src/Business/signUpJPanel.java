@@ -4,13 +4,8 @@
  */
 package Business;
 
-import Business.Profiles.professor;
 import Business.Profiles.professorDirectory;
-import Business.Profiles.student;
 import Business.Profiles.studentDirectory;
-import java.awt.CardLayout;
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -22,22 +17,11 @@ public class signUpJPanel extends javax.swing.JPanel {
     /**
      * Creates new form signUpJPanel
      */
-    private JPanel UserProcessContainer;
-    professorDirectory professorDirectory = new professorDirectory();
-    studentDirectory studentDirectory = new studentDirectory();
-    CourseCatalog CourseCatalog = new CourseCatalog();
-    course course = new course();
-    private student Student;
-    
-
-    public signUpJPanel(JPanel UserProcessContainer, professorDirectory professorDirectory, studentDirectory studentDirectory, student Student) {
+    public signUpJPanel(JPanel UserProcessContainer, professorDirectory professordirectory, studentDirectory studentdirectory) {
         initComponents();
-
-        this.UserProcessContainer = UserProcessContainer;
-        this.professorDirectory = professorDirectory;
-        this.studentDirectory = studentDirectory;
-        this.Student = Student;
+        
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,16 +34,15 @@ public class signUpJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         txtUserName = new javax.swing.JTextField();
-        txtEmailID = new javax.swing.JTextField();
-        txtPassword = new javax.swing.JTextField();
-        txtLocation = new javax.swing.JTextField();
+        txtUserName1 = new javax.swing.JTextField();
+        txtUserName2 = new javax.swing.JTextField();
+        txtUserName3 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         lblRole = new javax.swing.JLabel();
         cmBoxRole = new javax.swing.JComboBox<>();
         btnSignUp = new javax.swing.JButton();
-        btnBackToLogin = new javax.swing.JButton();
 
         jLabel1.setText("User Name :");
 
@@ -69,21 +52,21 @@ public class signUpJPanel extends javax.swing.JPanel {
             }
         });
 
-        txtEmailID.addActionListener(new java.awt.event.ActionListener() {
+        txtUserName1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmailIDActionPerformed(evt);
+                txtUserName1ActionPerformed(evt);
             }
         });
 
-        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+        txtUserName2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPasswordActionPerformed(evt);
+                txtUserName2ActionPerformed(evt);
             }
         });
 
-        txtLocation.addActionListener(new java.awt.event.ActionListener() {
+        txtUserName3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLocationActionPerformed(evt);
+                txtUserName3ActionPerformed(evt);
             }
         });
 
@@ -95,19 +78,12 @@ public class signUpJPanel extends javax.swing.JPanel {
 
         lblRole.setText("Role :");
 
-        cmBoxRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Professor", "Student" }));
+        cmBoxRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Professor", "Student", "Universal Certification Authority" }));
 
         btnSignUp.setText("Sign Up");
         btnSignUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSignUpActionPerformed(evt);
-            }
-        });
-
-        btnBackToLogin.setText("Login here");
-        btnBackToLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackToLoginActionPerformed(evt);
             }
         });
 
@@ -125,12 +101,11 @@ public class signUpJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel4))
                 .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBackToLogin)
                     .addComponent(btnSignUp)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtLocation, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-                        .addComponent(txtEmailID, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-                        .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                        .addComponent(txtUserName3, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                        .addComponent(txtUserName1, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                        .addComponent(txtUserName2, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
                         .addComponent(txtUserName)
                         .addComponent(cmBoxRole, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(176, Short.MAX_VALUE))
@@ -146,14 +121,14 @@ public class signUpJPanel extends javax.swing.JPanel {
                             .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtUserName2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addGap(18, 18, 18)
-                        .addComponent(txtEmailID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtUserName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUserName3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,9 +136,7 @@ public class signUpJPanel extends javax.swing.JPanel {
                     .addComponent(cmBoxRole, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
                 .addComponent(btnSignUp)
-                .addGap(18, 18, 18)
-                .addComponent(btnBackToLogin)
-                .addContainerGap(159, Short.MAX_VALUE))
+                .addContainerGap(199, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -171,93 +144,27 @@ public class signUpJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUserNameActionPerformed
 
-    private void txtEmailIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailIDActionPerformed
+    private void txtUserName1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserName1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailIDActionPerformed
+    }//GEN-LAST:event_txtUserName1ActionPerformed
 
-    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+    private void txtUserName2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserName2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtPasswordActionPerformed
+    }//GEN-LAST:event_txtUserName2ActionPerformed
 
-    private void txtLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLocationActionPerformed
+    private void txtUserName3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserName3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtLocationActionPerformed
+    }//GEN-LAST:event_txtUserName3ActionPerformed
 
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
         // TODO add your handling code here:
-
-        String UserName = txtUserName.getText();
-        String Password = txtPassword.getText();
-        String EmailID = txtEmailID.getText();
-        String Location = txtLocation.getText();
-        String option = cmBoxRole.getSelectedItem().toString();
-
-        if (option.equals("Student")) {
-
-            JOptionPane.showMessageDialog(null, "worked at first");
-
-            student student = studentDirectory.addStudent();
-
-            JOptionPane.showMessageDialog(null, "worked till here");
-            student.setStudUserName(UserName);
-            student.setStudPassword(Password);
-            student.setStudEmail(EmailID);
-            student.setStudLocation(Location);
-            student.setStudRole(option);
-            JOptionPane.showMessageDialog(null, "Student Added Sucessfully");
-
-            ArrayList<student> studentList = studentDirectory.getstudentList();
-            StringBuilder displayMessage = new StringBuilder("Student Details:\n");
-
-            for (student stud : studentList) {
-                displayMessage.append("Username: ").append(stud.getStudUserName()).append("\n");
-                displayMessage.append("Email: ").append(stud.getStudEmail()).append("\n");
-                displayMessage.append("Location: ").append(stud.getStudLocation()).append("\n");
-                displayMessage.append("Role: ").append(stud.getStudRole()).append("\n");
-                displayMessage.append("----------------------------------\n");
-
-                JOptionPane.showMessageDialog(null, displayMessage.toString());
-            }
-
-        } else if (option.equals("Professor")) {
-            professor professor = professorDirectory.addprofessor();
-            professor.setProfUserName(UserName);
-            professor.setProfPassword(Password);
-            professor.setProfEmail(EmailID);
-            professor.setProfLocation(Location);
-            professor.setProfRole(option);
-            JOptionPane.showMessageDialog(null, "Professor Added Sucessfully");
-
-            ArrayList<professor> professorList = professorDirectory.getProfessorList();
-            StringBuilder displayMessage = new StringBuilder("Student Details:\n");
-
-            for (professor prof : professorList) {
-                displayMessage.append("Username: ").append(prof.getProfUserName()).append("\n");
-                displayMessage.append("Email: ").append(prof.getProfEmail()).append("\n");
-                displayMessage.append("Location: ").append(prof.getProfLocation()).append("\n");
-                displayMessage.append("Role: ").append(prof.getProfRole()).append("\n");
-                displayMessage.append("----------------------------------\n");
-
-                JOptionPane.showMessageDialog(null, displayMessage.toString());
-            }
-        } else if (option.equals("Select")) {
-            JOptionPane.showMessageDialog(null, "Please Select a Valid Role");
-        } else {
-            JOptionPane.showMessageDialog(null, "Invalid Entry");
-        }
+        
+        
+        
     }//GEN-LAST:event_btnSignUpActionPerformed
 
-    private void btnBackToLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackToLoginActionPerformed
-        // TODO add your handling code here:   
-        loginJPanel loginjpanel = new loginJPanel(UserProcessContainer, professorDirectory, studentDirectory, course, CourseCatalog);
-        UserProcessContainer.add("loginJPanel", loginjpanel);
-        CardLayout layout = (CardLayout) UserProcessContainer.getLayout();
-        System.out.println("Switching to SignUpJPanel");
-        layout.next(UserProcessContainer);
-    }//GEN-LAST:event_btnBackToLoginActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBackToLogin;
     private javax.swing.JButton btnSignUp;
     private javax.swing.JComboBox<String> cmBoxRole;
     private javax.swing.JLabel jLabel1;
@@ -265,9 +172,9 @@ public class signUpJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lblRole;
-    private javax.swing.JTextField txtEmailID;
-    private javax.swing.JTextField txtLocation;
-    private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtUserName;
+    private javax.swing.JTextField txtUserName1;
+    private javax.swing.JTextField txtUserName2;
+    private javax.swing.JTextField txtUserName3;
     // End of variables declaration//GEN-END:variables
 }

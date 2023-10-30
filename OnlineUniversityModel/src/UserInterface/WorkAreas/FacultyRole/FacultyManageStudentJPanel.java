@@ -4,32 +4,19 @@
  */
 package UserInterface.WorkAreas.FacultyRole;
 
-import Business.CourseCatalog;
-import Business.Profiles.professorDirectory;
-import Business.Profiles.studentDirectory;
-import Business.course;
-import javax.swing.JPanel;
-
 /**
  *
  * @author niyatiashar
  */
-public class FacultyManageStudentJPanel extends javax.swing.JPanel {
+public class FacultymanageStudentJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form manageStudentJPanel
      */
-    
-    
-     private JPanel UserProcessContainer;
-    private studentDirectory studentDirectory;
-    private professorDirectory professorDirectory;
-    private course course;
-    private CourseCatalog CourseCatalog;
-    
-    public FacultyManageStudentJPanel(JPanel UserProcessContainer, studentDirectory studentDirectory, professorDirectory professorDirectory, course course, CourseCatalog CourseCatalog) {
+    public FacultymanageStudentJPanel() {
         initComponents();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

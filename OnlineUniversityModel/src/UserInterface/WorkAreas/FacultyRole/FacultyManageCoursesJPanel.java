@@ -4,14 +4,6 @@
  */
 package UserInterface.WorkAreas.FacultyRole;
 
-import Business.CourseCatalog;
-import Business.Profiles.professorDirectory;
-import Business.Profiles.studentDirectory;
-import Business.course;
-import Business.signUpJPanel;
-import java.awt.CardLayout;
-import javax.swing.JPanel;
-
 /**
  *
  * @author niyatiashar
@@ -21,18 +13,8 @@ public class FacultyManageCoursesJPanel extends javax.swing.JPanel {
     /**
      * Creates new form manageCourseJPanel
      */
-    private JPanel UserProcessContainer;
-    private studentDirectory studentDirectory;
-    private professorDirectory professorDirectory;
-    private course course;
-    private CourseCatalog CourseCatalog;
-
-    public FacultyManageCoursesJPanel(JPanel UserProcessContainer, professorDirectory professorDirectory, studentDirectory studentDirectory) {
+    public FacultyManageCoursesJPanel() {
         initComponents();
-       this.UserProcessContainer = UserProcessContainer;
-       this.studentDirectory = studentDirectory;
-       this.professorDirectory = professorDirectory;
-       
     }
 
     /**
@@ -47,7 +29,7 @@ public class FacultyManageCoursesJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblcourseDetails = new javax.swing.JTable();
         lblmanageCourse = new javax.swing.JLabel();
-        btnCreatCourse = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         tblcourseDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -63,13 +45,8 @@ public class FacultyManageCoursesJPanel extends javax.swing.JPanel {
         lblmanageCourse.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblmanageCourse.setText("Manage Courses");
 
-        btnCreatCourse.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        btnCreatCourse.setText("Create Course");
-        btnCreatCourse.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCreatCourseActionPerformed(evt);
-            }
-        });
+        jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jButton1.setText("Create Course");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -81,7 +58,7 @@ public class FacultyManageCoursesJPanel extends javax.swing.JPanel {
                     .addComponent(lblmanageCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnCreatCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(202, 202, 202)))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
@@ -93,26 +70,14 @@ public class FacultyManageCoursesJPanel extends javax.swing.JPanel {
                 .addGap(43, 43, 43)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(63, 63, 63)
-                .addComponent(btnCreatCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(69, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCreatCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatCourseActionPerformed
-        // TODO add your handling code here:
-
-        FacultyCreateCourseJPanel facultycreatecoursejpanel = new FacultyCreateCourseJPanel(UserProcessContainer, professorDirectory, studentDirectory, course, CourseCatalog );
-        UserProcessContainer.add("FacultyCreateCourseJPanel", facultycreatecoursejpanel);
-        CardLayout layout = (CardLayout) UserProcessContainer.getLayout();
-        System.out.println("Switching to SignUpJPanel");
-        layout.next(UserProcessContainer);
-
-
-    }//GEN-LAST:event_btnCreatCourseActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCreatCourse;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblmanageCourse;
     private javax.swing.JTable tblcourseDetails;

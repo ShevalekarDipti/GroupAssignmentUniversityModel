@@ -31,6 +31,9 @@ public class professorDirectory {
         
     }
      
+    public ArrayList<professor> getPersonList() {
+        return professorList;
+    }
     
     public professor addprofessor(){
         professor professor = new professor();
@@ -50,28 +53,5 @@ public class professorDirectory {
         }
         return null; 
     }  
-
-    public void addHardcodedProfessors() {
-        String[] usernames = {"ProfA", "ProfB", "ProfC", "ProfD", "ProfE", "ProfF", "ProfG", "ProfH", "ProfI", "ProfJ"};
-        String[] emails = {"profA@example.com", "profB@example.com", "profC@example.com", "profD@example.com", "profE@example.com", "profF@example.com", "profG@example.com", "profH@example.com", "profI@example.com", "profJ@example.com"};
-        String[] locations = {"Location A", "Location B", "Location C", "Location D", "Location E", "Location F", "Location G", "Location H", "Location I", "Location J"};
-        String[] passwords = {"passA123", "passB456", "passC789", "passD012", "passE345", "passF678", "passG901", "passH234", "passI567", "passJ890"};
-        String[] researchInterests = {"Interest A", "Interest B", "Interest C", "Interest D", "Interest E", "Interest F", "Interest G", "Interest H", "Interest I", "Interest J"};
-
-        // Add ten professors with hardcoded values
-        for (int i = 0; i < 10; i++) {
-            professor newProfessor = new professor();
-            newProfessor.setProfUserName(usernames[i]);
-            newProfessor.setProfEmail(emails[i]);
-            newProfessor.setProfLocation(locations[i]);
-            newProfessor.setProfPassword(passwords[i]);
-            newProfessor.setProfResearchInterest(researchInterests[i]);
-
-  
-
-            professorList.add(newProfessor);
-        }
-    }
-    
       
 }

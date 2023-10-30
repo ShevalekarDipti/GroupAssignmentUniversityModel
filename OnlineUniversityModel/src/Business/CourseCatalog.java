@@ -4,42 +4,34 @@
  */
 package Business;
 
-import Business.Profiles.professor;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
 
 /**
  *
  * @author dshev
  */
 public class CourseCatalog {
-    
-   private ArrayList <course> CourseCatalog ; 
-   
-   public CourseCatalog(ArrayList<course> courseCatalog) {
-        this.CourseCatalog = courseCatalog;
+
+    private ArrayList<course> courseCatalog;
+
+    public CourseCatalog(ArrayList<course> courseCatalog) {
+        this.courseCatalog = courseCatalog;
     }
 
-    CourseCatalog() {
-        
-         this.CourseCatalog= new ArrayList<course>();
-      }
-    
-   public ArrayList<course> getCourseCatalog() {
-        return CourseCatalog;
+    public ArrayList<course> getCourseCatalog() {
+        return courseCatalog;
     }
 
     public void setCourseCatalog(ArrayList<course> courseCatalog) {
-        this.CourseCatalog = courseCatalog;
+        this.courseCatalog = courseCatalog;
     }
-        
     public Map<String, ArrayList<course>> createProfessorCourseMap() {
         Map<String, ArrayList<course>> mapOfCourse = new HashMap<>();
 
-        for (course course : CourseCatalog) {
-            String professorName = course.getProfName();
+        for (course course : courseCatalog) {
+            String professorName = course.getProfessorName(); 
             if (mapOfCourse.containsKey(professorName)) {
                 mapOfCourse.get(professorName).add(course);
             } else {
@@ -48,13 +40,25 @@ public class CourseCatalog {
                 mapOfCourse.put(professorName, courses);
             }
         }
-        
-        
-        
+
         return mapOfCourse;
     }
+}
     
-     
+    
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 // Map <String, course> courseMapping = new HashMap<>();
 //     ArrayList<HashMap<String, String>> CourseCatalog = new ArrayList<>();
@@ -95,6 +99,3 @@ public class CourseCatalog {
 //    }
 //      
 
-   
- 
-}

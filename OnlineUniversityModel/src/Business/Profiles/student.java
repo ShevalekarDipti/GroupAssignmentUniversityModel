@@ -13,25 +13,26 @@ public class student {
     private String studUserName;
     private String studPassword;
     private String studID;
+    private String credits;
+    private String courseStatus;
     private String studEmail;
-    private String studLocation;
-    private String studRole;
-     private String term;
+    private String language;
+    private String region;
 
-    public String getStudRole() {
-        return studRole;
+    public String getLanguage() {
+        return language;
     }
 
-    public void setStudRole(String studRole) {
-        this.studRole = studRole;
+    public void setLanguage(String language) {
+        this.language = language;
     }
 
-    public String getStudLocation() {
-        return studLocation;
+    public String getRegion() {
+        return region;
     }
 
-    public void setStudLocation(String studLocation) {
-        this.studLocation = studLocation;
+    public void setRegion(String region) {
+        this.region = region;
     }
 
     public String getStudUserName() {
@@ -58,7 +59,13 @@ public class student {
         this.studID = StudID;
     }
 
-   
+    public String getCourseStatus() {
+        return courseStatus;
+    }
+
+    public void setCourseStatus(String courseStatus) {
+        this.courseStatus = courseStatus;
+    }
 
     public String getStudEmail() {
         return studEmail;
@@ -68,7 +75,13 @@ public class student {
         this.studEmail = studEmail;
     }
 
-   
+    public String getCredits() {
+        return credits;
+    }
+
+    public void setCredits(String credits) {
+        this.credits = credits;
+    }
 
     public String getTerm() {
         return term;
@@ -77,7 +90,11 @@ public class student {
     public void setTerm(String term) {
         this.term = term;
     }
-   
+    private String term;
     
+     private static void calculateCredits(){
+         
+         
+     }
     
 }

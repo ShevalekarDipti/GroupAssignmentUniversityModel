@@ -4,6 +4,13 @@
  */
 package UserInterface.WorkAreas.StudentRole;
 
+import Business.Profiles.professorDirectory;
+import Business.Profiles.student;
+import Business.Profiles.studentDirectory;
+import Business.course;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author niyatiashar
@@ -13,8 +20,13 @@ public class StudentTranscriptJPanel extends javax.swing.JPanel {
     /**
      * Creates new form transcriptJPanel
      */
-    public StudentTranscriptJPanel() {
+    private course course;
+    private student student;
+    private studentDirectory studentDirectory;
+    public StudentTranscriptJPanel(JPanel UserProcessContainer, professorDirectory professordirectory, studentDirectory studentdirectory) {
         initComponents();
+        this.course = course;
+        PopulateTable();
     }
 
     /**
@@ -28,14 +40,15 @@ public class StudentTranscriptJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblTranscript = new javax.swing.JTable();
         btndownloadtrans = new javax.swing.JButton();
+        btnViewTranscript = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Student Transcript");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblTranscript.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -43,28 +56,41 @@ public class StudentTranscriptJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Course Name", "Course Number", "Language", "Instructor", "Title 5"
+                "Course Name", "Course ID", "Language", "Region", "Credit"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblTranscript);
 
         btndownloadtrans.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         btndownloadtrans.setText("Download Transcript");
+        btndownloadtrans.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btndownloadtransActionPerformed(evt);
+            }
+        });
+
+        btnViewTranscript.setText("View Transcript");
+        btnViewTranscript.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewTranscriptActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(378, 378, 378)
-                        .addComponent(btndownloadtrans, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnViewTranscript)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(btndownloadtrans, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(83, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -72,19 +98,47 @@ public class StudentTranscriptJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75)
+                .addGap(69, 69, 69)
+                .addComponent(btnViewTranscript)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85)
+                .addGap(61, 61, 61)
                 .addComponent(btndownloadtrans, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(189, Short.MAX_VALUE))
+                .addGap(119, 119, 119))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnViewTranscriptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewTranscriptActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_btnViewTranscriptActionPerformed
+
+    private void btndownloadtransActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndownloadtransActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btndownloadtransActionPerformed
+
+    private void PopulateTable() {
+        DefaultTableModel dtm = (DefaultTableModel) tblTranscript.getModel();
+        dtm.setRowCount(0);
+        for (student student : studentDirectory.getstudentList()){
+            Object[] row = new Object[5];
+            
+            row[0] = course.getCourseName();
+            row[1] = course.getCourseID();
+            row[2] = course.getLanguage();
+            row[3] = course.getRegion();
+            row[4] = course.getCredit();
+
+            dtm.addRow(row);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnViewTranscript;
     private javax.swing.JButton btndownloadtrans;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblTranscript;
     // End of variables declaration//GEN-END:variables
 }

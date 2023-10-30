@@ -17,14 +17,70 @@ public class course {
     String courseTime;
     String courseDay;
     String courseTerm;
-    String profName;
+    String language;
+    String region;
+    String credit;
+    String Term;
+    String Day;
+    String Time;
+    String ProfessorName;
 
-    public String getProfName() {
-        return profName;
+    public String getProfessorName() {
+        return ProfessorName;
     }
 
-    public void setProfName(String profName) {
-        this.profName = profName;
+    public void setProfessorName(String ProfessorName) {
+        this.ProfessorName = ProfessorName;
+    }
+
+    
+    public String getDay() {
+        return Day;
+    }
+
+    public void setDay(String Day) {
+        this.Day = Day;
+    }
+
+    public String getTime() {
+        return Time;
+    }
+
+    public void setTime(String Time) {
+        this.Time = Time;
+    }
+
+    public String getTerm() {
+        return Term;
+    }
+
+    public void setTerm(String Term) {
+        this.Term = Term;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public String getCredit() {
+        return credit;
+    }
+
+    public void setCredit(String credit) {
+        this.credit = credit;
+    }
+
+    
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
     }
 
     public String getCourseName() {
@@ -74,9 +130,7 @@ public class course {
     public void setCourseTerm(String courseTerm) {
         this.courseTerm = courseTerm;
     }
-    
-   
 
-
-
+  
+  
 }

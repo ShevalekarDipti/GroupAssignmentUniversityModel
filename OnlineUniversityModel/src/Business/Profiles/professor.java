@@ -10,22 +10,13 @@ package Business.Profiles;
  */
 public class professor {
     
-  
+   
     private String profLocation;
     private String profUserName;
     private String profPassword;
     private String profResearchInterest;
     private String profEmail;
-    private String ProfRole;
-
-    public String getProfRole() {
-        return ProfRole;
-    }
-
-    public void setProfRole(String ProfRole) {
-        this.ProfRole = ProfRole;
-    }
-   
+    private String providedCourses;
 
     public String getProfEmail() {
         return profEmail;
@@ -34,7 +25,15 @@ public class professor {
     public void setProfEmail(String profEmail) {
         this.profEmail = profEmail;
     }
-    
+
+    public String getProvidedCourses() {
+        return providedCourses;
+    }
+
+    public void setProvidedCourses(String providedCourses) {
+        this.providedCourses = providedCourses;
+    }
+
     public String getProfResearchInterest() {
         return profResearchInterest;
     }
@@ -43,7 +42,6 @@ public class professor {
         this.profResearchInterest = profResearchInterest;
     }
 
-   
     public String getProfLocation() {
         return profLocation;
     }
